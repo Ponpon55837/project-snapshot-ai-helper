@@ -96,19 +96,18 @@ src/
 └── api/
     └── user.ts
 ```
-````
 
 ## 函式清單
 
 ### src/utils/math.ts
 
-- **add(a, b)** - 加法函式
-- **multiply(a, b)** - 乘法函式
+- add(a, b) - 加法函式
+- multiply(a, b) - 乘法函式
 
 ### src/api/user.ts
 
-- **getUserInfo(userId)** - 獲取使用者資訊
-- **updateUser(userId, data)** - 更新使用者資料
+- getUserInfo(userId) - 獲取使用者資訊
+- updateUser(userId, data) - 更新使用者資料
 
 ## 依賴清單
 
@@ -129,8 +128,7 @@ src/
   "axios": "^0.21.1"
 }
 ```
-
-```
+````
 
 ---
 
@@ -147,4 +145,3 @@ src/
 ## License
 
 MIT
-```

@@ -97,7 +97,6 @@ src/
 └── api/
     └── user.ts
 ```
-````
 
 ## Function List
 
@@ -130,6 +129,7 @@ src/
   "axios": "^0.21.1"
 }
 ```
+````
 
 ---
 
@@ -146,7 +146,3 @@ If you find this project helpful:
 ## License
 
 MIT
-
-```
-
-```
