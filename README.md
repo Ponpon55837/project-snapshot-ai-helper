@@ -1,5 +1,5 @@
 👉 [English Version](./README_EN.md)  
-👉 [部落格文章](https://jackle.pro/articles/ai-context-limit-roocode-orchestrator)
+👉 [部落格文章](https://jackle.pro/articles/ai-rewrite-functions-snapshot-solution)
 
 # Project Snapshot AI Helper
 
