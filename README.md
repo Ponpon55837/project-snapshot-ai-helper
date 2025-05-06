@@ -52,6 +52,13 @@ Snapshot 是一份能「一次整理、一次餵 AI」的專案摘要文件，�
 ## 📦 安裝與使用
 
 1. 將 `snapshot.js` 放在專案根目錄。
+
+   **注意**：如果你的 `package.json` 中設定了 `"type": "module"`，則無法直接執行 `node snapshot.js`，因為 `"type": "module"` 使用的是 ESModule 而非 CommonJS。解決方法是將檔案重新命名為 `snapshot.cjs`，然後執行：
+
+   ```bash
+   node snapshot.cjs
+   ```
+
 2. 執行腳本：
 
 ```bash

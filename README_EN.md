@@ -53,6 +53,13 @@ This document acts as a map for AI, letting it know what you've written, what to
 ## 📦 Installation and Usage
 
 1. Place `snapshot.js` in the root directory of your project.
+
+   **Note**: If your `package.json` is set with `"type": "module"`, you cannot directly run `node snapshot.js` because `"type": "module"` uses ESModule instead of CommonJS. To resolve this, rename the file to `snapshot.cjs` and run:
+
+   ```bash
+   node snapshot.cjs
+   ```
+
 2. Run the script:
 
 ```bash
