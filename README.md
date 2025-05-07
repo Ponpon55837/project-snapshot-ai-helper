@@ -1,5 +1,5 @@
 👉 [English Version](./README_EN.md)  
-👉 [部落格文章](https://jackle.pro/articles/ai-rewrite-functions-snapshot-solution)
+👉 [原作者文章](https://jackle.pro/articles/ai-rewrite-functions-snapshot-solution)
 
 # Project Snapshot AI Helper
 
@@ -11,11 +11,12 @@
 
 這支工具會：
 
-- 掃描整個專案（自動排除 `node_modules` / `.git` 等雜訊）
-- 提取所有 `.ts`, `.js`, `.vue` 檔案中的函式名稱與註解
-- 整理專案使用的套件依賴
-- 輸出一份 `snapshot.md`，列出檔案結構、函式清單與依賴清單
-- 搭配 prompt 模板使用，讓 AI 輕鬆串接既有邏輯
+- 掃描整個專案（自動排除 `node_modules`、`.git` 等可自訂的雜訊）
+- 提取 `.js`、`.jsx`、`.ts`、`.tsx`、`.vue` 檔案中的函式、方法、組件和 Hooks
+- 偵測使用的框架並提供優化建議
+- 整理所有 package.json 中的套件依賴
+- 輸出全面的 `snapshot.md`，包含專案結構、函式清單與依賴清單
+- 支援多種解析模式，適用於不同程式碼風格和框架
 
 ---
 
@@ -51,13 +52,8 @@ Snapshot 是一份能「一次整理、一次餵 AI」的專案摘要文件，�
 
 ## 📦 安裝與使用
 
-1. 將 `snapshot.js` 放在專案根目錄。
-
-   **注意**：如果你的 `package.json` 中設定了 `"type": "module"`，則無法直接執行 `node snapshot.js`，因為 `"type": "module"` 使用的是 ESModule 而非 CommonJS。解決方法是將檔案重新命名為 `snapshot.cjs`，然後執行：
-
-   ```bash
-   node snapshot.cjs
-   ```
+1-1. 將 `snapshot.js` 放在專案根目錄。
+1-2. **注意**：如果你的 `package.json` 中設定了 `"type": "module"`，則無法直接執行 `node snapshot.js`，因為 `"type": "module"` 使用的是 ESModule 而非 CommonJS。解決方法是將檔案重新命名為 `snapshot.cjs`，然後執行：
 
 2. 執行腳本：
 
@@ -65,9 +61,28 @@ Snapshot 是一份能「一次整理、一次餵 AI」的專案摘要文件，�
 node snapshot.js
 ```
 
+or
+
+```bash
+   node snapshot.cjs
+```
+
 3. 得到的 `snapshot.md` 貼給 AI。
 
 ---
+
+##🧮 支援的解析模式
+此工具會自動偵測並解析：
+
+Controller/物件模式：module.exports = {...} 或 export default {...} 中的方法
+Export 函式模式：使用 export function 或 export const 箭頭函式定義的函式
+React 組件：函數組件和類組件
+React Hooks：自定義 Hook 的定義與使用
+Vue Composition API：響應式原語（ref、reactive、computed 等）
+Vue Options API：方法、計算屬性和監聽器
+TypeScript：介面、類型和列舉
+
+對於每個函式/組件，它會提取： 1.名稱和參數 2.相關註解（單行和 JSDoc/多行） 3.框架特定資訊
 
 ## 🧠 使用情境舉例
 
@@ -75,68 +90,86 @@ node snapshot.js
 - **避免重複開發**：AI 不會再寫一樣的函式。
 - **跨 session 提供 context**：AI 不會突然「失憶」。
 - **快速 onboarding**：給新同事或助理 AI 看。
+- **程式碼審查**：獲得框架特定的優化建議
 
 ---
 
 ## 🔧 客製化建議
 
-你可以擴充 `snapshot.js` 來支援：
+你可以擴充 `snapshot.js` or `snapshot.cjs` 來支援：
 
-- Vue `<script setup>` 的函式分析
-- 提取 JSDoc 註解與型別說明
-- 加上路徑群組、分類、依賴整理
-- 產生 YAML / JSON 等格式給特定 LLM 系統使用
+-EXCLUDES：要跳過的目錄和檔案陣列
+-FILE_EXTENSIONS：新增支援的檔案類型
+-MAX_DEPTH：控制目錄樹的深度
+-PARSERS：為不同的程式碼模式新增或修改解析規則
 
 ---
 
 ## 📄 範例輸出格式（snapshot.md）
 
 ````md
-# snapshot.md
+# 專案分析快照
+
+## 專案概述
+
+- **分析日期**: 2023/3/1 上午 10:15:30
+- **偵測到的框架**: React, TypeScript, Redux
+- **檔案總數**: 158
+- **函式/組件總數**: 283
+
+### 優化建議
+
+- 考慮使用 useMemo/useCallback 優化效能
 
 ## 專案目錄結構
 
 ```text
 src/
-├── utils/
-│   └── math.ts
-└── api/
-    └── user.ts
+├── components/
+│   ├── Button.tsx
+│   └── Form.tsx
+├── hooks/
+│   └── useAuth.ts
+└── pages/
+    └── Home.tsx
 ```
+````
 
-## 函式清單
+## 函式與組件清單
 
-### src/utils/math.ts
+### src/components/Button.tsx
 
-- add(a, b) - 加法函式
-- multiply(a, b) - 乘法函式
+- **Button(props)** [React 組件] - 具有可自訂樣式的主要按鈕組件
+- **IconButton(icon, onClick)** [React 組件] - 支援圖示的按鈕變體
 
-### src/api/user.ts
+### src/hooks/useAuth.ts
 
-- getUserInfo(userId) - 獲取使用者資訊
-- updateUser(userId, data) - 更新使用者資料
+- **useAuth(redirectUrl)** [React Hook: useAuth] - 處理登入狀態的身份驗證 Hook
 
 ## 依賴清單
 
-### 專案名稱
-
-#### devDependencies
-
-```json
-{
-  "typescript": "^4.0.0"
-}
-```
+### project-name
 
 #### dependencies
 
 ```json
 {
-  "axios": "^0.21.1"
+  "react": "^17.0.2",
+  "react-dom": "^17.0.2",
+  "react-router-dom": "^6.0.0"
 }
 ```
-````
 
+#### devDependencies
+
+```json
+{
+  "typescript": "^4.5.4",
+  "vite": "^2.7.0"
+}
+```
+
+```
 ---
 
 ## 🙌 貢獻與回報
@@ -152,3 +185,4 @@ src/
 ## License
 
 MIT
+```
