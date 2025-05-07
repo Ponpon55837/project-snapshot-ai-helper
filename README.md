@@ -1,5 +1,6 @@
-👉 [English Version](./README_EN.md)  
 👉 [原作者文章](https://jackle.pro/articles/ai-rewrite-functions-snapshot-solution)
+👉 [原作者專案](https://github.com/chenjackle45/project-snapshot-ai-helper)
+👉 [English Version](./README_EN.md)
 
 # Project Snapshot AI Helper
 
