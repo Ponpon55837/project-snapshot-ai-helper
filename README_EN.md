@@ -181,7 +181,7 @@ src/
 
 If you find this project helpful:
 
-- Give it a ⭐️ star!
+- Give Original Author a ⭐️ star! I'm just adding a blanket to the shoulders of giants for a more comfortable ride.
 - PRs are welcome: support more languages, comment formats, or interactive interfaces.
 - Share your experiences or funny AI cases in Issues 🤖
 
