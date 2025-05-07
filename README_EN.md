@@ -73,7 +73,7 @@ This document acts as a map for AI, letting it know what you've written, what to
 
 ---
 
-## 🧮 Supported Parsing Pattern s
+## 🧮 Supported Parsing Patterns
 
 This tool automatically detects and parses:
 

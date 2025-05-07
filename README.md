@@ -75,18 +75,41 @@ node snapshot.cjs
 
 ---
 
-##🧮 支援的解析模式
+<!-- ## 🧮 Supported Parsing Patterns
+
+This tool automatically detects and parses:
+
+- **Controller/Object Pattern**: Methods in `module.exports = {...}` or `export default {...}`
+- **Export Function Pattern**: Functions using `export function` or `export const` arrow functions
+- **React Components**: Both functional and class components
+- **React Hooks**: Custom hook definitions and usage
+- **Vue Composition API**: Reactivity primitives (ref, reactive, computed, etc.)
+- **Vue Options API**: Methods, computed properties, and watchers
+- **TypeScript**: Interfaces, types, and enums
+
+For each function/component, it extracts:
+
+- Name and parameters
+- Associated comments (both single-line and JSDoc/multi-line)
+- Framework-specific information -->
+
+## 🧮 支援的解析模式
+
 此工具會自動偵測並解析：
 
-Controller/物件模式：module.exports = {...} 或 export default {...} 中的方法
-Export 函式模式：使用 export function 或 export const 箭頭函式定義的函式
-React 組件：函數組件和類組件
-React Hooks：自定義 Hook 的定義與使用
-Vue Composition API：響應式原語（ref、reactive、computed 等）
-Vue Options API：方法、計算屬性和監聽器
-TypeScript：介面、類型和列舉
+- **Controller/物件模式**：`module.exports = {...}` 或 `export default {...}` 中的方法
+- **Export 函式模式**：使用 `export function` 或 `export const` 箭頭函式定義的函式
+- **React 組件**：函數組件和類組件
+- **React Hooks**：自定義 Hook 的定義與使用
+- **Vue Composition API**：響應式原語（ref、reactive、computed 等）
+- **Vue Options API**：方法、計算屬性和監聽器
+- **TypeScript**：介面、類型和列舉
 
-對於每個函式/組件，它會提取： 1.名稱和參數 2.相關註解（單行和 JSDoc/多行） 3.框架特定資訊
+對於每個函式/組件，它會提取：
+
+- 名稱和參數
+- 相關註解（單行和 JSDoc/多行）
+- 框架特定資訊
 
 ## 🧠 使用情境舉例
 
