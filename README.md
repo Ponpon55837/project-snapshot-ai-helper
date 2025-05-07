@@ -133,11 +133,9 @@ src/
 └── pages/
     └── Home.tsx
 ```
-````
 
 ## 函式與組件清單
 
-```text
 ### src/components/Button.tsx
 
 - **Button(props)** [React 組件] - 具有可自訂樣式的主要按鈕組件
@@ -146,7 +144,6 @@ src/
 ### src/hooks/useAuth.ts
 
 - **useAuth(redirectUrl)** [React Hook: useAuth] - 處理登入狀態的身份驗證 Hook
-```
 
 ## 依賴清單
 
@@ -170,8 +167,8 @@ src/
   "vite": "^2.7.0"
 }
 ```
+````
 
-```
 ---
 
 ## 🙌 貢獻與回報
@@ -187,8 +184,3 @@ src/
 ## License
 
 MIT
-```
-
-```
-
-```
