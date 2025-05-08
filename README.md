@@ -126,10 +126,10 @@ For each function/component, it extracts:
 
 你可以擴充 `snapshot.js` or `snapshot.cjs` 來支援：
 
--EXCLUDES：要跳過的目錄和檔案陣列
--FILE_EXTENSIONS：新增支援的檔案類型
--MAX_DEPTH：控制目錄樹的深度
--PARSERS：為不同的程式碼模式新增或修改解析規則
+- EXCLUDES：要跳過的目錄和檔案陣列
+- FILE_EXTENSIONS：新增支援的檔案類型
+- MAX_DEPTH：控制目錄樹的深度
+- PARSERS：為不同的程式碼模式新增或修改解析規則
 
 ---
 
